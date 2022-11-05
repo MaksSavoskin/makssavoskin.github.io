@@ -1,0 +1,120 @@
+body{
+	margin: 0;
+	background: #8D8741
+}
+
+header{
+	height: 30%;
+	background: #8D8741;
+}
+
+header img{
+	width: 20%;
+	height: 20%;
+	box-shadow: 5px 5px 5px grey;
+}
+
+.inline-header { 
+	display: inline-block; 
+}
+main{
+	background: #bc986a;
+}
+
+p{
+	font-family: "Georgia";
+}
+
+h1{
+	font-family: "Cinzel";
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+}
+h3{
+	font-family: "Georgia";
+	font-size: 16px
+}
+
+a{
+	font-family: "Courier New";
+}
+
+q{
+	font-family: "Cremona";
+	font-size: 12px
+}
+
+
+.table-settings{
+	background: #bc986a;
+}
+
+.rigth-info{
+  	background: #659dbd;
+		float: right;
+}
+
+
+.content{
+	background: #bc986a;
+	width: 80%;
+	min-width: 50%;
+	height: 100%;
+	flex: 1;
+
+}
+
+.content-side{
+	width: 10%;
+	background: #659dbd;
+}
+
+@media (max-width: 1000px){
+	.content-side{
+			display: none;
+	}
+}
+
+.div-main{
+	width: 100%;
+	display: flex;
+	border: 1px solid #659dbd; 
+}
+
+.history-card img{
+	max-width: 200px;
+	max-height: 250px;
+	
+	width: 100%;
+	height: 100%;
+}
+
+.history-card{
+	background: #daad86;
+	padding: 10px 10px;
+	height: 100%;
+}
+
+.parent {
+  display: flex;
+  flex-direction:row;
+}
+
+.column {
+  flex: 1 1 0px;
+  border: 1px solid #659dbd;
+}
+
+
+.history-card-table td{
+	width: 33%;
+	margin: 0px 0px;
+
+}
+
+footer{
+	background: #8D8741;
+	height: auto;
+	position: absolute;
+}
