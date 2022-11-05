@@ -96,17 +96,6 @@ q{
 	height: 100%;
 }
 
-.parent {
-  display: flex;
-  flex-direction:row;
-}
-
-.column {
-  flex: 1 1 0px;
-  border: 1px solid #659dbd;
-}
-
-
 .history-card-table td{
 	width: 33%;
 	margin: 0px 0px;
