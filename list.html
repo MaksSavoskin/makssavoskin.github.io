@@ -1,0 +1,138 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../outlines.css" rel="stylesheet">
+	<title></title>
+
+	<style type="text/css">
+		#infinite-list {
+		  /* We need to limit the height and show a scrollbar */
+		  width: 1000px;
+		  height: 600px;
+		  overflow: auto;
+
+		  /* Optional, only to check that it works with margin/padding */
+		  margin: 30px;
+		  padding: 20px;
+		  border: 10px solid black;
+		}
+
+		/* Optional eye candy below: */
+		li {
+		  padding: 10px;
+		  list-style-type: none;
+		}
+		li:hover {
+		  background: #ccc;
+		}
+	</style>
+</head>
+<body>
+
+<!--    <tr>
+			<td>
+				<div class="history-card">
+	        		<div class="history-card-image">
+	                        <img src="lenin.jpg">
+	                </div>
+                    
+                    <div class="history-card-description">
+                        <article>
+                            <h3>Владимир Ильич Ленин</h3>
+                            <p>
+                                Краткое описание исторической личности
+                            </p>
+                            <q>
+                                Больших слов нельзя бросать на ветер
+                            </q>
+                            <section>
+                                <div class="history-card-statistic">Лайки 2</div>
+                            </section>
+                        </article>
+            		</div>
+            	</div>
+			</td>		 
+		</tr> -->
+
+	<div id="infinite-div" class="content">
+		<table class="history-card-table">
+
+		</table>
+	</div>	 
+
+	<script type="text/javascript">
+		var url_photos = 'https://jsonplaceholder.typicode.com/photos/';
+		var id = 1;
+
+		var listElm = document.querySelector('#infinite-div');
+
+		var loadMore = function(data, card_number) {
+			var listElm = document.querySelector('#infinite-div');
+
+		    var td_card = document.createElement('td');
+		    var div_card = document.createElement('div');
+		    var div_card_image = document.createElement('div');
+		    var img_card = document.createElement('img');
+
+		    div_card_image.className = 'history-card-image';
+		    div_card.className = 'history-card';
+		    img_card.setAttribute('src', data['url']);
+
+
+		    div_card_image.appendChild(img_card);
+		    div_card.appendChild(div_card_image);
+		    td_card.appendChild(div_card);
+
+		    if (card_number % 2 == 1){
+		    	console.log('here1');
+				var tr_card = document.createElement('tr');
+				tr_card.setAttribute('id', card_number);
+				tr_card.appendChild(td_card);
+				listElm.appendChild(tr_card);
+			}
+			else{
+				console.log('here2');
+				var tr_card = document.querySelector('#' + (card_number - 1));
+				tr_card.appendChild(td_card);
+				listElm.appendChild(tr_card);
+			}
+		}
+
+		var do_req = function(){
+			for(var i = 0; i < 20; i++)
+			{
+				var fetch_url = fetch(url_photos + id);
+
+				fetch_url.then(response => {
+					if (response.ok){
+						return response.json();
+					}
+					throw new Error('End.');
+
+				}).then(data => {
+					loadMore(data, id);
+					id++;
+				}).catch(err => {
+					return;
+				});
+
+			}
+
+
+
+		}
+
+		// Detect when scrolled to bottom.
+		listElm.addEventListener('scroll', function() {
+		  if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+		    do_req();
+		  }
+		});
+
+
+	do_req();
+	</script>
+</body>
+</html>
