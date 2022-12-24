@@ -5,6 +5,8 @@
     <link href="outlines.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="keywords" content="История, Наследние, Личности, Память">
+    <script type="text/javascript" src="load_time.js"></script>
+    <script type="text/javascript" src="current_page.js"></script>
 
 </head>
 <body>
@@ -23,9 +25,28 @@
 						<a class="a-menu" href="index.html">Главная</a> |
 						<a class="a-menu" href="about.html">О нас</a> |
 						<a class="a-menu" href="contact.html">Связаться с нами</a>
+						<!--<a class="a-menu" href="review.html">Отзывы</a>-->
 					</nav>
 				</div>
 			</div>
+			<script type="text/javascript">
+				elem = document.getElementsByClassName('a-menu');
+
+				current_page = document.location;
+
+				console.log(current_page);
+
+				for(var i = 0; i < elem.length; i++)
+				{
+					var href = elem[i].getAttribute('href');
+					if(current_page['href'].endsWith(href))
+					{
+						elem[i].classList.add('a-active')
+					}
+				}
+
+			</script>
+
 		</div>
 	</header>
 
@@ -76,6 +97,7 @@
 			<q>Лабы будут когда будут лабы</q>
 			C<sub>2</sub>H<sub>5</sub>OH
 		</p>
+		<p id="time"> </p>
 	</footer>
 
 </body>

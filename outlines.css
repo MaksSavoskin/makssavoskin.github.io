@@ -88,11 +88,11 @@ q{
 	
 	width: 100%;
 	height: 100%;
+	display: flex
 }
 
 .history-card{
 	background: #daad86;
-	padding: 10px 10px;
 	height: 100%;
 }
 
@@ -106,4 +106,15 @@ footer{
 	background: #8D8741;
 	height: auto;
 	position: absolute;
+}
+
+.a-menu:hover{
+	background: red;
+}
+
+tr{
+	display: flex;
+}
+.a-active{
+	background: green;
 }

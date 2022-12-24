@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>История в лицах</title>
+    <link href="outlines.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="keywords" content="История, Наследние, Личности, Память">
+    <script type="text/javascript" src="load_time.js"></script>
+    <script type="text/javascript" src="formOnSubmit.js"></script>
+<!--         <script type="text/javascript" src="current_page.js"></script> -->
+
+</head>
+<body>
+
+	<header>
+		<div class="header-div">
+
+			<div class="logo inline-header">
+				<img src="logo.jpeg">
+			</div>
+
+			<div class="menu inline-header">
+				<h1> Меню </h1>
+				<div class="menu-navigate">
+					<nav>
+						<a class="a-menu" href="index.html">Главная</a> |
+						<a class="a-menu" href="about.html">О нас</a> |
+						<a class="a-menu" href="contact.html">Связаться с нами</a>
+						<a class="a-menu" href="review.html">Отзывы</a>
+					</nav>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				elem = document.getElementsByClassName('a-menu');
+
+				current_page = document.location;
+
+				console.log(current_page);
+
+				for(var i = 0; i < elem.length; i++)
+				{
+					var href = elem[i].getAttribute('href');
+					if(current_page['href'].endsWith(href))
+					{
+						elem[i].classList.add('a-active')
+					}
+				}
+
+			</script>
+
+		</div>
+	</header>
+
+	<main>
+		<h1>Отзывы и предложения!</h1>
+        <p>Здесь вы можете оставить отзыв о нашем сайте. Каждый отзыв важен для нас и помагает нам стать лучше.</p>
+    
+
+        <div class="div-main">
+
+        	<div class="content" >
+        		<div class="div-form">
+        			<form id="form">	
+					    <p><b>Введите ваш отзыв:</b></p>
+					    <p><input id="name_user" type="text" name="name of user" placeholder="Input your name"></p>
+					    <p><textarea id="review" rows="10" cols="45" name="text"></textarea></p>
+					    <p><input type="submit" value="Отправить"></p>
+					    <p id="log"></p>
+        			</form>
+        		</div>
+
+        		<div class="div-reviews-content">
+        			<h1> Отзывы </h1>
+        			<div id="rlist" class="div-reviews-list">
+
+        			</div>
+        		</div>
+        	</div>
+
+        	<script type="text/javascript">
+
+        		var reviews = JSON.parse(localStorage.getItem('reviews'));
+        		reviews.reverse();
+        		var div_reviews = document.getElementById('rlist');
+
+        		for(var i = 0; i < reviews.length; i++){
+        			var review_div = document.createElement('div');
+        			review_div.class = 'review';
+
+        			var user_review_name = document.createElement('p');
+        			user_review_name.innerText = 'User: ' + reviews[i]['user'];
+
+        			var review_text = document.createElement('p');
+        			review_text.innerText = reviews[i]['text'];
+
+
+        			review_div.appendChild(user_review_name);
+        			review_div.appendChild(review_text);
+
+        			div_reviews.appendChild(review_div);
+        			div_reviews.appendChild(document.createElement('hr'));
+        		}
+
+        	</script>
+
+
+        	<script type="text/javascript">
+        		function logSubmit(event) {
+
+				  var user_name = document.getElementById('name_user').value;
+				  var review = document.getElementById('review').value;
+
+				  if(user_name.length < 3 || review.length < 5) return;
+
+				  var reviews = JSON.parse(localStorage.getItem('reviews'));
+					if (reviews != null) {
+							reviews.push({'user': user_name, 'text': review});
+					}
+					else{
+							reviews = [{'user': user_name, 'text': review}];
+					}
+
+
+				  localStorage.setItem('reviews', JSON.stringify(reviews));
+				}
+
+				const form = document.getElementById('form');
+				form.addEventListener('submit', logSubmit);
+        	</script>
+
+        	<div class="content-side">
+        		<p> Hello </p>
+        	</div>
+
+    	</div>
+    </main>
+
+
+
+	<footer>
+		<h3>
+			Контактная информация
+		</h3>
+		<ul> 
+			<li>Город Улица Дом</li>
+			<li>ИП Савоськин®</li>
+			<li>8(800)555-35-35</li>
+			<li>bestemailaddressintheworld@gmail.com</li>
+		</ul>
+		<pre>
+			H     H   E E E   L       L
+			H     H   E       L       L
+			H H H H   E E E   L       L
+			H     H   E       L       L
+   			H     H   E E E   L L L   L L L   
+			
+
+		</pre>
+		<h4> Моя любимая цитата и формула успеха</h4>
+		<p>
+			<q>Лабы будут когда будут лабы</q>
+			C<sub>2</sub>H<sub>5</sub>OH
+		</p>
+		<p id="time"> </p>
+	</footer>
+
+</body>
+</html>
