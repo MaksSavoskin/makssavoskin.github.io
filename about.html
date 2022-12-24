@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>История в лицах</title>
+    <link href="outlines.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="keywords" content="История, Наследние, Личности, Память">
+    <script type="text/javascript" src="load_time.js"></script>
+    <script type="text/javascript" src="current_page.js"></script>
+
+</head>
+<body>
+
+	<header>
+		<div class="header-div">
+
+			<div class="logo inline-header">
+				<img src="logo.jpeg">
+			</div>
+
+			<div class="menu inline-header">
+				<h1> Меню </h1>
+				<div class="menu-navigate">
+					<nav>
+						<a class="a-menu" href="index.html">Главная</a> |
+						<a class="a-menu" href="about.html">О нас</a> |
+						<a class="a-menu" href="contact.html">Связаться с нами</a>
+						<!--<a class="a-menu" href="review.html">Отзывы</a>-->
+					</nav>
+				</div>
+			</div>
+			<script type="text/javascript">
+				elem = document.getElementsByClassName('a-menu');
+
+				current_page = document.location;
+
+				console.log(current_page);
+
+				for(var i = 0; i < elem.length; i++)
+				{
+					var href = elem[i].getAttribute('href');
+					if(current_page['href'].endsWith(href))
+					{
+						elem[i].classList.add('a-active')
+					}
+				}
+
+			</script>
+
+		</div>
+	</header>
+
+	<main>
+		<h1>Who are we?</h1>
+        <p>
+			<s>МЫ ЕСТЬ ГРУТ!</s> Мы группа студентов которая любит историю!
+		</p>
+		<p>
+			В нашей замечательной команде состоят: Савоськин Максим и его воображаемые друзья
+		</p>
+		<h1>Where are we?</h1>
+		<p>
+			Наш офис располагается в самом центре <b>Санкт-Петербурга</b> по адресу: Улица названная в честь известной(или не очень) личности, д.1
+		</p>
+        <h1>Наши партнёры</h1>
+			<p>Университет(научно-исследовательская корпорация) ИТМО - лучший университет(научно-исследовательская корпорация)</p>
+			<ul>
+				<li>Стабильно проводим одну лекцию по прикладной математике в месяц вместо четырёх с 1900 года</li>
+				<li>Удобный коворкинг(в котором никогда нет места)</li>
+				<li>Электротехника на курсе для рабработчиков ПО(Зачем? Почему бы и нет.)</li>
+			</ul>
+
+    </main>
+
+
+	<footer>
+		<h3>
+			Контактная информация
+		</h3>
+		<ul> 
+			<li>Город Улица Дом</li>
+			<li>ИП Савоськин®</li>
+			<li>8(800)555-35-35</li>
+			<li>bestemailaddressintheworld@gmail.com</li>
+		</ul>
+		<pre>
+			H     H   E E E   L       L
+			H     H   E       L       L
+			H H H H   E E E   L       L
+			H     H   E       L       L
+   			H     H   E E E   L L L   L L L   
+			
+
+		</pre>
+		<h4> Моя любимая цитата и формула успеха</h4>
+		<p>
+			<q>Лабы будут когда будут лабы</q>
+			C<sub>2</sub>H<sub>5</sub>OH
+		</p>
+		<p id="time"> </p>
+	</footer>
+
+</body>
+</html>
